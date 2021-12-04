@@ -36,7 +36,7 @@ namespace bless_n_keep4._1
             // 
             this.panel1.Location = new System.Drawing.Point(81, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 300);
+            this.panel1.Size = new System.Drawing.Size(489, 323);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);

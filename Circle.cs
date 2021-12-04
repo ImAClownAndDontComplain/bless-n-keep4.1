@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime;
 
 namespace bless_n_keep4._1
 {
@@ -15,7 +16,7 @@ namespace bless_n_keep4._1
         private int x;
         private int y;
         private int R=10;
-
+        private bool sel;
         public Circle(int x, int y)
         {
             this.x = x;
@@ -33,10 +34,18 @@ namespace bless_n_keep4._1
         {
             R = _R;
         }
-        public void draw(MouseEventArgs e)
+        public void setsel(bool b) { sel = b; }
+        public void draw(PaintEventArgs e)
         {
-            Pen blackPen = new Pen(Color.Black, 3);
-            e.Graphics.DrawEllipse(blackPen, x, y, 2*R, 2*R);
+            Pen pen;
+            if(this.sel==false) pen = new Pen(Color.Black, 3);
+            else pen = new Pen(Color.Green, 3);
+            e.Graphics.DrawEllipse(pen, x, y, 2*R, 2*R);
+        }
+        public bool isthere(int _x, int _y)
+        {
+            if (MathF.Abs(x * x + y * y - _x * _x - _y * _y) <= R) return true;
+            else return false;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace bless_n_keep4._1
 			for (firstItem(); !isEoL(); nextItem()) res++;
 			return res;
 		}
-		void add(Circle C)
+		public void add(Circle C)
 		{
 			Item item = new Item(C);
 			if (first == null)
@@ -50,37 +50,37 @@ namespace bless_n_keep4._1
 				last = item;
 			}
 		}
-		void firstItem()
+		public void firstItem()
 		{
 			current = first;
 		}
-		void lastItem()
+		public void lastItem()
 		{
 			current = last;
 		}
-		void prevItem()
+		public void prevItem()
 		{
 			if (!isEoL()) current = current.prev;
 		}
-		void nextItem()
+		public void nextItem()
 		{
 			if (!isEoL()) current = current.next;
 		}
-		bool isEoL()
+		public bool isEoL()
 		{
 			return current == null;
 		}
-		bool isThere(Circle C)
+		public bool isThere(Circle C)
 		{
 			for (firstItem(); !isEoL(); nextItem())
 				if (curItem() == C) return true;
 			return false;
 		}
-		Circle curItem()
+		public Circle curItem()
 		{
 			return current.C;
 		}
-		Circle removeC()
+		public Circle removeC()
 		{
 			if (current == null) return null;
 			Item prev = current.prev;
