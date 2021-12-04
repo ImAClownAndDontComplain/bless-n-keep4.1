@@ -15,7 +15,7 @@ namespace bless_n_keep4._1
     {
         private int x;
         private int y;
-        private int R=10;
+        private int R=20;
         private bool sel;
         public Circle(int x, int y)
         {

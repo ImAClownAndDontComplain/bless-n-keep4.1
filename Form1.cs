@@ -12,7 +12,8 @@ namespace bless_n_keep4._1
 {
     public partial class Form1 : Form
     {
-        Storage storage;
+        Storage storage = new Storage();
+        bool ctrlpressed = false;
         public Form1()
         {
             InitializeComponent();
@@ -23,18 +24,21 @@ namespace bless_n_keep4._1
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        private void FormMouseClick(object sender, MouseEventArgs e)
         {
             bool newc = true;
             for (storage.firstItem(); !storage.isEoL(); storage.nextItem())
                 if (storage.curItem().isthere(e.X, e.Y) == true) { 
-                    newc = false; 
-
+                    newc = false;
+                    if (ctrlpressed) storage.curItem().setsel(true);
+                    else
+                    {
+                        Circle Csel = storage.removeC();
+                        for (storage.firstItem(); !storage.isEoL(); storage.nextItem()) storage.curItem().setsel(false);
+                        Csel.setsel(true);
+                        storage.add(Csel);
+                    }
+                    storage.lastItem();
                 }
             if (newc == true)
             {
@@ -43,7 +47,23 @@ namespace bless_n_keep4._1
                 for (storage.firstItem(); !storage.isEoL(); storage.nextItem()) storage.curItem().setsel(false);
                 storage.add(C);
             }
-            else
+            Controls.Clear();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Control) ctrlpressed = true;
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Control) ctrlpressed = false;
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            if (storage != null)
+                for (storage.firstItem(); !storage.isEoL(); storage.nextItem()) storage.curItem().draw(e);
         }
     }
 }

@@ -34,12 +34,10 @@ namespace bless_n_keep4._1
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(81, 38);
+            this.panel1.Location = new System.Drawing.Point(494, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(489, 323);
+            this.panel1.Size = new System.Drawing.Size(294, 426);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
             // 
             // Form1
             // 
@@ -50,6 +48,10 @@ namespace bless_n_keep4._1
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMouseClick);
             this.ResumeLayout(false);
 
         }
