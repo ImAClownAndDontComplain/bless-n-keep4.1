@@ -25,6 +25,7 @@ namespace bless_n_keep4._1
         public int getx() { return x; }
         public int gety() { return y; }
         public int getR() { return R; }
+        public bool getsel() { return sel; }
         public void setC(int _x,int _y)
         {
             x = _x;

@@ -19,12 +19,7 @@ namespace bless_n_keep4._1
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormMouseClick(object sender, MouseEventArgs e)
+       private void FormMouseClick(object sender, MouseEventArgs e)
         {
             bool newc = true;
             for (storage.firstItem(); !storage.isEoL(); storage.nextItem())
@@ -53,6 +48,12 @@ namespace bless_n_keep4._1
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Control) ctrlpressed = true;
+            if (e.KeyCode == Keys.Delete)
+                for (storage.firstItem(); !storage.isEoL(); storage.nextItem())
+                    if (storage.curItem().getsel() == true)
+                    {
+                        Circle Cdel = storage.removeC();
+                    }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
