@@ -29,22 +29,13 @@ namespace bless_n_keep4._1
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(494, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 426);
-            this.panel1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
@@ -56,8 +47,6 @@ namespace bless_n_keep4._1
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
     }
 }
 

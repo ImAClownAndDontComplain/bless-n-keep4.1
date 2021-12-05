@@ -15,26 +15,26 @@ namespace bless_n_keep4._1
     {
         private int x;
         private int y;
-        private int R=20;
+        private int R;
         private bool sel;
         public Circle(int x, int y)
         {
             this.x = x;
             this.y = y;
         }
-        public int getx() { return x; }
-        public int gety() { return y; }
-        public int getR() { return R; }
-        public bool getsel() { return sel; }
-        public void setC(int _x,int _y)
+        /*public int getx() { return x; }
+        public int gety() { return y; }*/
+        /*public void setC(int _x,int _y)
         {
             x = _x;
             y = _y;
-        }
+        }*/
         public void setR(int _R)
         {
             R = _R;
         }
+        public int getR() { return R; }
+        public bool getsel() { return sel; }
         public void setsel(bool b) { sel = b; }
         public void draw(PaintEventArgs e)
         {
@@ -45,7 +45,7 @@ namespace bless_n_keep4._1
         }
         public bool isthere(int _x, int _y)
         {
-            if (MathF.Abs(x * x + y * y - _x * _x - _y * _y) <= R) return true;
+            if (((x - _x) * (x - _x)+ (y - _y) * (y - _y)) <= R*R) return true;
             else return false;
         }
     }

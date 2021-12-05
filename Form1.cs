@@ -14,16 +14,16 @@ namespace bless_n_keep4._1
     {
         Storage storage = new Storage();
         bool ctrlpressed = false;
+        const int r = 20;
         public Form1()
         {
             InitializeComponent();
         }
-
-       private void FormMouseClick(object sender, MouseEventArgs e)
+        private void FormMouseClick(object sender, MouseEventArgs e)
         {
             bool newc = true;
             for (storage.firstItem(); !storage.isEoL(); storage.nextItem())
-                if (storage.curItem().isthere(e.X, e.Y) == true) { 
+                if (storage.curItem().isthere(e.X-r, e.Y-r) == true) { 
                     newc = false;
                     if (ctrlpressed) storage.curItem().setsel(true);
                     else
@@ -37,12 +37,14 @@ namespace bless_n_keep4._1
                 }
             if (newc == true)
             {
-                Circle C = new Circle(e.X, e.Y);
+                Circle C = new Circle(e.X-r, e.Y-r);
+                C.setR(r);
                 C.setsel(true);
                 for (storage.firstItem(); !storage.isEoL(); storage.nextItem()) storage.curItem().setsel(false);
                 storage.add(C);
             }
             Controls.Clear();
+            Invalidate();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -63,8 +65,7 @@ namespace bless_n_keep4._1
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            if (storage != null)
-                for (storage.firstItem(); !storage.isEoL(); storage.nextItem()) storage.curItem().draw(e);
+            for (storage.firstItem(); !storage.isEoL(); storage.nextItem()) storage.curItem().draw(e);
         }
     }
 }
