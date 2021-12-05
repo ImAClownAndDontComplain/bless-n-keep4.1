@@ -25,7 +25,7 @@ namespace bless_n_keep4._1
             for (storage.firstItem(); !storage.isEoL(); storage.nextItem())
                 if (storage.curItem().isthere(e.X-r, e.Y-r) == true) { 
                     newc = false;
-                    if (ctrlpressed) storage.curItem().setsel(true);
+                    if (ctrlpressed==true) storage.curItem().setsel(true);
                     else
                     {
                         Circle Csel = storage.removeC();
@@ -49,13 +49,26 @@ namespace bless_n_keep4._1
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Control) ctrlpressed = true;
-            if (e.KeyCode == Keys.Delete)
-                for (storage.firstItem(); !storage.isEoL(); storage.nextItem())
+            if (e.KeyCode == Keys.ControlKey) ctrlpressed = true;
+            if (e.KeyCode == Keys.ShiftKey)
+            {
+                storage.firstItem();
+                while (!storage.isEoL())
+                {
                     if (storage.curItem().getsel() == true)
                     {
+                        if (storage.count() == 1)
+                        {
+                            Circle _Cdel = storage.removeC();
+                            break;
+                        }
                         Circle Cdel = storage.removeC();
                     }
+                    else storage.nextItem();
+                }
+                Controls.Clear();
+                Invalidate();
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)

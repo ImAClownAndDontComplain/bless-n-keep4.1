@@ -30,8 +30,10 @@ namespace bless_n_keep4._1
 		}
 		public int count()
 		{
+			Item i = current;
 			int res = 0;
 			for (firstItem(); !isEoL(); nextItem()) res++;
+			for (firstItem(); current!=i; nextItem()) ;
 			return res;
 		}
 		public void add(Circle C)
@@ -48,6 +50,7 @@ namespace bless_n_keep4._1
 				last.next = item;
 				item.prev = last;
 				last = item;
+				last.next = null;
 			}
 		}
 		public void firstItem()
@@ -99,9 +102,9 @@ namespace bless_n_keep4._1
 			}
 			else if (prev == null)
 			{
-				current = next;
-				first.prev = null;
 				first = next;
+				first.prev = null;
+				current = first;
 			}
 			else
 			{
