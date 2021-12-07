@@ -33,7 +33,7 @@ namespace bless_n_keep4._1
                         Csel.setsel(true);
                         storage.add(Csel);
                     }
-                    storage.lastItem();
+                    storage.lastItem();//to finish the for() cycle
                 }
             if (newc == true)
             {
@@ -73,7 +73,8 @@ namespace bless_n_keep4._1
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Control) ctrlpressed = false;
+            if (e.KeyCode == Keys.ControlKey)
+                ctrlpressed = false;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
